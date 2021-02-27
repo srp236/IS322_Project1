@@ -1,51 +1,41 @@
-var foo = 'foo'; // Variables declared outside of any function are considered global variables.
-				 // These variables can be found on the window object.
-(function () {
-	// Any kind of function, will create a new variable scope. Variables declared in this 
-	// function will only be accesible inside this function, unless passed by reference through
-	// a function call. 
+var mockDatabase = [
+		{ category: 'eraser', name: 'Article 1', price: '$1.99', image: '../images/jk.jpg'},
+		{ category: 'pencil', name: 'Article 2', price: '$6.99', image: '../images/bts_fila.jpg'},
+		{ category: 'pencil', name: 'Article 3', price: '$4.29', image: '../images/bts_be_1.jpg'},
+		{ category: 'pen', name: 'Article 4', price: '$3.49', image: '../images/jk.jpg'},
+		{ category: 'pen', name: 'Article 5', price: '$12.99', image: '../images/jk.jpg'},
+		{ category: 'pencil', name: 'Article 6', price: '$8.79', image: '../images/jk.jpg'},
+		{ category: 'eraser', name: 'Article 7', price: '$2.49', image: '../images/jk.jpg'},
+		{ category: 'pen', name: 'Article 8', price: '$7.99', image: '../images/jk.jpg'},
+		{ category: 'eraser', name: 'Article 9', price: '$2.99', image: '../images/jk.jpg'},
+];
 
-	// Lower level scope will always overwrite a higher level scope.  
-	var foo = 'bar';
-	console.log(foo); // 'bar'
-	// Global Variables can still be accessed through window object 
-	console.log(window.foo); // 'foo'
+function renderList (results) {
+	var b;
+	var myList = document.querySelectorAll('.mycard');
 
-	// An array of Objects, similar to database records we will eventually be dealing with.
-	var mockDatabase = [
-		{ category: 'eraser', name: 'Article 1', price: '$1.99' },
-		{ category: 'pencil', name: 'Article 2', price: '$6.99' },
-		{ category: 'pencil', name: 'Article 3', price: '$4.29' },
-		{ category: 'pen', name: 'Article 4', price: '$3.49' },
-		{ category: 'pen', name: 'Article 5', price: '$12.99' },
-		{ category: 'pencil', name: 'Article 6', price: '$8.79' },
-		{ category: 'eraser', name: 'Article 7', price: '$2.49' },
-		{ category: 'pen', name: 'Article 8', price: '$7.99' },
-		{ category: 'eraser', name: 'Article 9', price: '$2.99' },
-	];
-
-	function renderList (results) {
-		var tableBody = document.querySelector('#results-table tbody');
-
-		// clear out inner HTML to get rid of any older results
-		tableBody.innerHTML = '';
-		// Map each database record to a string containing the HTML for it's row
-		var tableRows = results.map(function (result, index) {
-			return '<tr><td>' + index + '</td><td>' + result.name + '</td><td>' + 
-					result.category + '</td><td>' + result.price + '</td></tr>';
-		});
-		// Set the contents of the table body to the new set of rendered HTML rows
-		tableRows.forEach(function (row) {
-			tableBody.innerHTML += row; // += adds to HTML instead of overwriting it entirely.
-		});
-
-		// Lower level scope once again overwrites what's above it.
-		var foo = 'renderList';
-		console.log(foo); // 'renderList'
+	for(b = 0; b < myList.length; b++)
+	{	
+		myList[b].innerHTML = '';
 	}
+	var t = 0;
+	var cardOne = results.map(function (result) {
+		var tempImg = document.createElement("IMG");
+		tempImg.src = result.image;
+		myList[t].appendChild(tempImg);
+		t++;
+		return '<br>' + result.name +' '+result.price;
+	});
 
-	renderList(mockDatabase);
+	var s = 0;	
+	cardOne.forEach(function (prod) {
+		myList[s].innerHTML += prod; 
+		s++;
+	});
+}
+renderList(mockDatabase);
 
+/*
 	// Function to Order results list 
 	function orderBy(sortValue) {
 		// Sort method varies based on what type of value we're sorting 
@@ -95,6 +85,4 @@ var foo = 'foo'; // Variables declared outside of any function are considered gl
 		toggleprice(value);
 	});
 
-
-
-})();
+})();*/
