@@ -1,13 +1,13 @@
 var mockDatabase = [
-		{ category: 'eraser', name: 'Article 1', price: '$1.99', image: '../images/eraser.jpg'},
-		{ category: 'pencil', name: 'Article 2', price: '$6.99', image: '../images/pencil1.jpg'},
-		{ category: 'pencil', name: 'Article 3', price: '$4.29', image: '../images/pencil2.jpg'},
-		{ category: 'pen', name: 'Article 4', price: '$3.49', image: '../images/pen1.jpg'},
-		{ category: 'pen', name: 'Article 5', price: '$12.99', image: '../images/pen2.jpg'},
-		{ category: 'pencil', name: 'Article 6', price: '$8.79', image: '../images/pencil3.jpg'},
-		{ category: 'case', name: 'Article 7', price: '$2.49', image: '../images/case1.jpg'},
-		{ category: 'pen', name: 'Article 8', price: '$7.99', image: '../images/pen3.jpg'},
-		{ category: 'note', name: 'Article 9', price: '$2.99', image: '../images/note1.jpg'},
+		{ category: 'eraser', name: 'Air Eraser', price: '$1.99', image: '../images/eraser.jpg'},
+		{ category: 'pencil', name: 'Smooth Pencil', price: '$6.99', image: '../images/pencil1.jpg'},
+		{ category: 'pencil', name: 'Pastel Pencil', price: '$4.29', image: '../images/pencil2.jpg'},
+		{ category: 'pen', name: 'Pattern Pen', price: '$3.49', image: '../images/pen1.jpg'},
+		{ category: 'pen', name: 'Calligraphy Pen', price: '$12.99', image: '../images/pen2.jpg'},
+		{ category: 'pencil', name: 'Slim Pencil', price: '$8.79', image: '../images/pencil3.jpg'},
+		{ category: 'case', name: 'Collapsable case', price: '$2.49', image: '../images/case1.jpg'},
+		{ category: 'pen', name: 'Bulky Pen', price: '$7.99', image: '../images/pen3.jpg'},
+		{ category: 'note', name: 'Small Note', price: '$2.99', image: '../images/note1.jpg'},
 ];
 
 function renderList (results) {
@@ -35,54 +35,26 @@ function renderList (results) {
 }
 renderList(mockDatabase);
 
-/*
-	// Function to Order results list 
-	function orderBy(sortValue) {
-		// Sort method varies based on what type of value we're sorting 
-		var sortedResults = (sortValue === 'name') ? 
-			mockDatabase.sort(function (a, b) { // Strings need to be sorted in a slightly more compldex way
-				var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-				var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-				// Sorts alphabetically.  -1 puts it before. 1 puts it after
-				if (nameA < nameB) {
-				    return -1;
-				}
-				if (nameA > nameB) {
-				    return 1;
-				}
-			}) : 
-			mockDatabase.sort(function (a, b) { // Numbers a booleans are much simpler. 
-												// Just need postive or negative number 
-				// Object properties can be accessed through a string representing their name
-				return a[sortValue] - b[sortValue];
-			});
-		renderList(sortedResults);
-	}
-	// Change events trigger after the value of a form input changes
-	document.querySelector('#orderBy').addEventListener('change', function(event){
-		// Event is the JavaScript event that transpired, in our change a CHANGE event.
-		// Target is the element it was performed on, useful for when the event targets 
-		// multiple elements.
-		// Value has the name implies is the current value of the input element, if there is one
-		orderBy(event.target.value);
-	});
+function orderBy(sortValue) {
+	var sortedResults = (sortValue === 'name') ? 
+		mockDatabase.sort(function (a, b) { // Strings need to be sorted in a slightly more compldex way
+			var nameA = nameA.localeCompare(a.name.toUpperCase()); 
+			var nameB = nameB.localeCompare(b.name.toUpperCase()); 
+			if (nameA < nameB) {
+				return -1;
+			}
+			if (nameA > nameB) {
+				return 1;
+			}
+		}):
 
-	// Function to filter out unprice results
-	function toggleprice(showprice) {
-		// If showprice is TRUE, only display price results
-		// Filter will only inclue objects that return TRUE from it's query
-		var filteredResults = mockDatabase.filter(function (result) {
-			// If showprice is TRUE, always show.
-			// Otherweise only show if price is TRUE
-			return showprice || result.price;
+		mockDatabase.sort(function (a, b) { 
+			return a[sortValue] - b[sortValue];
 		});
-		renderList(filteredResults);
-	}
-	// Change events trigger after the value of a form input changes
-	document.querySelector('#price').addEventListener('change', function(event){
-		// in this case value is a string that we need to convert to a boolean 
-		var value = event.target.value === 'true';
-		toggleprice(value);
-	});
+	renderList(sortedResults);
 
-})();*/
+}
+
+document.querySelector('#orderBy').addEventListener('change', function(event){
+	orderBy(event.target.value);
+});
