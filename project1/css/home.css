@@ -39,13 +39,15 @@ h2 {
 .header-text {
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: rgb(146, 146, 146);
     font-size:50px
 }
+
 /*home body*/
+
 .home-container{
     background-color: rgb(241, 239, 234);
     width: 1024px;
@@ -53,6 +55,18 @@ h2 {
     display: flex;
     min-height: 100%;
     flex-direction: column;
+}
+
+.home-container h1{
+    text-align: center;
+    justify-content: center;
+    color: rgba(70, 70, 70, 0.877);
+}
+
+.home-text{
+    justify-content: center;
+    padding: 20px;
+    color: rgba(70, 70, 70, 0.877);
 }
 /*footer*/
 footer {
@@ -66,4 +80,46 @@ footer {
     justify-content: space-around;
     text-align: center;
     color: white;
+}
+/*media queries*/
+@media only screen and (max-width: 1199px) {
+	.app-container {
+		flex-direction: column;
+		width: 900px;
+        text-size-adjust: auto;
+	}
+
+	.filter {
+		min-height: auto;
+		flex: 0 0 35px;
+	}
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1000px) {
+	.app-container {
+		width: 720px;
+        text-size-adjust: auto;
+	}
+
+	.content-container .mycard {
+		flex-basis: 330px;
+		height: 330px;
+	}
+}
+
+@media only screen and (max-width: 749px) {
+	.app-container {
+		margin: 0 15px;
+		width: calc(100% - 30px);
+        text-size-adjust: auto;
+	}
+
+	.content-container {
+		width: calc(100% - 50px);
+	}
+
+	.content-container .mycard {
+		height: 50px;
+		flex-basis: 100%;
+	}
 }

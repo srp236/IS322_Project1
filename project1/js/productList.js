@@ -1,13 +1,13 @@
 var mockDatabase = [
-		{ category: 'eraser', name: 'Article 1', price: '$1.99', image: '../images/jk.jpg'},
-		{ category: 'pencil', name: 'Article 2', price: '$6.99', image: '../images/bts_fila.jpg'},
-		{ category: 'pencil', name: 'Article 3', price: '$4.29', image: '../images/bts_be_1.jpg'},
-		{ category: 'pen', name: 'Article 4', price: '$3.49', image: '../images/jk.jpg'},
-		{ category: 'pen', name: 'Article 5', price: '$12.99', image: '../images/jk.jpg'},
-		{ category: 'pencil', name: 'Article 6', price: '$8.79', image: '../images/jk.jpg'},
-		{ category: 'eraser', name: 'Article 7', price: '$2.49', image: '../images/jk.jpg'},
-		{ category: 'pen', name: 'Article 8', price: '$7.99', image: '../images/jk.jpg'},
-		{ category: 'eraser', name: 'Article 9', price: '$2.99', image: '../images/jk.jpg'},
+		{ category: 'eraser', name: 'Article 1', price: '$1.99', image: '../images/eraser.jpg'},
+		{ category: 'pencil', name: 'Article 2', price: '$6.99', image: '../images/pencil1.jpg'},
+		{ category: 'pencil', name: 'Article 3', price: '$4.29', image: '../images/pencil2.jpg'},
+		{ category: 'pen', name: 'Article 4', price: '$3.49', image: '../images/pen1.jpg'},
+		{ category: 'pen', name: 'Article 5', price: '$12.99', image: '../images/pen2.jpg'},
+		{ category: 'pencil', name: 'Article 6', price: '$8.79', image: '../images/pencil3.jpg'},
+		{ category: 'case', name: 'Article 7', price: '$2.49', image: '../images/case1.jpg'},
+		{ category: 'pen', name: 'Article 8', price: '$7.99', image: '../images/pen3.jpg'},
+		{ category: 'note', name: 'Article 9', price: '$2.99', image: '../images/note1.jpg'},
 ];
 
 function renderList (results) {
